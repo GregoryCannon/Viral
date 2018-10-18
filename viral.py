@@ -1,6 +1,7 @@
 from brian import *
-from tkinter import *
+from Tkinter import *
 import random
+import sys,os
 #test
 
 cat_names = []
@@ -9,15 +10,21 @@ truths = []
 lies = []
 
 
-for i in range(4):
+'a'
+ 
+
+numcats = 4
+numopts = 3
+
+for i in range(numcats):
     newname = input("Input a category name: ")
     cat_names.append(newname)
 
-for i in range(4):
+for i in range(numcats):
     catname = cat_names[i]
     cur_lies = []
     cur_inp = []
-    for i in range(3):
+    for i in range(numopts):
         opt = input("Enter an option for category \"" + catname + "\": ")
         cur_lies.append(opt)
         cur_inp.append(opt)
@@ -36,25 +43,35 @@ cards = []
 for i in range(100):
     cards.append(getcard(cat_names, inp, truths, lies))
 
+intro_string = "Click 'View Card' to see info, click 'Clear Info' when done"
 
-
+   
 class MyFirstGUI:
     def __init__(self, master):
         self.master = master
         self.i = 0
-        master.title("A simple GUI")
+        master.title("Viral!")
 
-        self.label = Label(master, text="This isn't our first GUI!")
+        self.label = Label(master, text=intro_string)
         self.label.pack(pady=25)
 
         self.greet_button = Button(master, text="Greet", command=self.greet)
         self.greet_button.pack()
 
-        self.change_button = Button(master, text="Change", command=self.change_label)
+        self.change_button = Button(master, text="View Card", command=self.change_label)
         self.change_button.pack()
 
+        self.clear_button = Button(master, text="Clear Info", command=self.clear_label)
+        self.clear_button.pack()
+
+        self.launch_button = Button(master, text="Fact Check", command=self.launch_gui)
+        self.launch_button.pack(pady=50)
+
+        self.truth_button = Button(master, text="Reveal Truth", command=self.show_truth)
+        self.truth_button.pack(pady=50)
+
         self.close_button = Button(master, text="Close", command=master.quit)
-        self.close_button.pack()
+        self.close_button.pack(pady=0)
 
         self.bot_label = Label(master, text="Made by XX")
         self.bot_label.pack(pady=100)
@@ -65,6 +82,16 @@ class MyFirstGUI:
     def change_label(self):
         self.label.config(text=cards[self.i])
         self.i += 1
+
+    def clear_label(self):
+        self.label.config(text = intro_string)
+
+    def show_truth(self):
+        self.label.config(text = truths)
+
+    def launch_gui(self):
+        import fact_check
+        
 
 root = Tk()
 
