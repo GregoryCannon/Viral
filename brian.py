@@ -19,7 +19,7 @@ def getcard(catnames,inp,truths,lies):
     print("show1", show1)
     print("show2", show2)
     print("show3", show3)
-    show = [show1,show2,show3]
+    show = [show1,show2]
     print("show", show)
     np.random.shuffle(show)
     print("ret", show)

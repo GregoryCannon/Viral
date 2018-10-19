@@ -1,5 +1,5 @@
 from brian import *
-from Tkinter import *
+from tkinter import *
 import random
 import sys,os
 #test
@@ -64,7 +64,8 @@ class MyFirstGUI:
         self.clear_button = Button(master, text="Clear Info", command=self.clear_label)
         self.clear_button.pack()
 
-        self.launch_button = Button(master, text="Fact Check", command=self.launch_gui)
+        #self.launch_button = Button(master, text="Fact Check", command=self.launch_gui)
+        self.launch_button = Button(master, text="Fact Checking coming soon", command=None)
         self.launch_button.pack(pady=50)
 
         self.truth_button = Button(master, text="Reveal Truth", command=self.show_truth)
@@ -73,21 +74,27 @@ class MyFirstGUI:
         self.close_button = Button(master, text="Close", command=master.quit)
         self.close_button.pack(pady=0)
 
-        self.bot_label = Label(master, text="Made by XX")
-        self.bot_label.pack(pady=100)
+        self.bot_label = Label(master, text="Made by Brian, Greg, Suki, Forrest and Gabbi")
+        self.bot_label.pack(pady=10)
 
     def greet(self):
         print("Greetings!")
 
     def change_label(self):
-        self.label.config(text=cards[self.i])
+        new_text = ""
+        for x in cards[self.i]:
+            new_text += x + "\n"
+        self.label.config(text=new_text)
         self.i += 1
 
     def clear_label(self):
         self.label.config(text = intro_string)
 
     def show_truth(self):
-        self.label.config(text = truths)
+        new_text = ""
+        for x in truths:
+            new_text += x + "\n"
+        self.label.config(text = new_text)
 
     def launch_gui(self):
         import fact_check
