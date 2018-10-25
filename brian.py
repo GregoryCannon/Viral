@@ -16,11 +16,6 @@ def getcard(catnames,inp,truths,lies):
         show3 = catnames[cats[2]] + ' = ' + truths[cats[2]]
     else:
         show3 = catnames[cats[2]] + ' = ' + np.random.choice(lies[cats[2]])
-    print("show1", show1)
-    print("show2", show2)
-    print("show3", show3)
-    show = [show1,show2]
-    print("show", show)
+    show = [show1,show2,show3]
     np.random.shuffle(show)
-    print("ret", show)
     return show
