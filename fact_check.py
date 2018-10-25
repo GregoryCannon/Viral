@@ -58,7 +58,7 @@ class FactCheckGui:
 
         #self.close_button = Button(master, text="Close", command=master.quit)
         #self.close_button.pack(pady=0)
-        self.bot_label = Label(master, text="Made by Brian, Greg, Suki, Forrest and Gabbi")
+        self.bot_label = Label(master, text="Made by Brian, Greg, Suki, Forrest and Gabby")
         self.bot_label.pack(pady=(35,15))
 
     def change_label(self):

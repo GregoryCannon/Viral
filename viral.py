@@ -103,7 +103,7 @@ class ViralGui:
         self.close_button = Button(master, text="Close", height=2, command=self.quit)
         self.close_button.pack(pady=1)
 
-        self.bot_label = Label(master, text="Made by Brian, Greg, Suki, Forrest and Gabbi")
+        self.bot_label = Label(master, text="Made by Brian, Greg, Suki, Forrest and Gabby")
         self.bot_label.pack(pady=1)
 
 
@@ -144,6 +144,8 @@ class ViralGui:
         print("hoots")
         timedelta = str(datetime.timedelta(seconds=self.secs))
         self.label.config(text=timedelta + " remaining!")
+        if (self.secs <= 0):
+            os.system('say "Time is up"')
         self.secs -= 1
         self.master.after(1000, lambda : self.countdown())
 
